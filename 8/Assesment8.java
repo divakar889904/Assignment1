@@ -1,23 +1,57 @@
 package com.assesment;
 
 
-import java.util.*;
-public class Assesment8 {
+import java.util.Arrays;
+import java.util.Scanner;
 
-	public static void main(String[] args) {
-		String names[][]=new String[2][3];
-		System.out.println("Enter the Elements");
-		Scanner sc=new Scanner(System.in);
-		for(int i=0;i<2;i++)
-			for(int j=0;j<3;j++) {
-				names[i][j]=sc.nextLine();
-				if(names[i][j]=="") {
-					System.out.println("NULL");
-					sc.close();
-					System.exit(0);
-					
-				}
+public class Assessment8 {
+	static int k = 0, v = 0;
+
+	public static void printWithoutLoop(String[][] name, int i, int j) {
+
+		if (k == i)
+			return;
+		System.out.println(name[k][v]);
+		if (v < j)
+			v++;
+		if (v == j) {
+			k++;
+			v = 0;
+		}
+
+		printWithoutLoop(name, i, j);
+
+	}
+	public static void printwithloop(String[][]name)
+	{
+		for (int i = 0; i < name.length; i++) {
+			for (int j = 0; j < name[i].length; j++) {
+			
+			System.out.println(name[i][j]);
+			}
 			}
 	}
 
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		String[][] names = new String[2][3];
+
+		for (int i = 0; i < names.length; i++) {
+			for (int j = 0; j < names[i].length; j++) {
+
+				names[i][j] = sc.nextLine();
+
+			}
+		}
+		System.out.println("----------********--------");
+System.out.println("Print without loop");
+System.out.println("------------*********-------");
+		printWithoutLoop(names, 2, 3);
+		System.out.println("-------------******-------");
+		System.out.println("Print with loop");
+		System.out.println("------------*******--------");
+		printwithloop(names);
+
+	}
 }
